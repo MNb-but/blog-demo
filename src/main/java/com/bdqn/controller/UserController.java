@@ -14,6 +14,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable int id) {
+        User user = userService.getById(id);
+        Integer code = user != null ? Code.GET_OK : Code.GET_ERR;
+        String msg = user != null ? "" : "数据查询失败，请重试！";
+        return new Result(code, user, msg);
+    }
+
     @GetMapping
     public Result getAll() {
         List<User> all = userService.getAll();

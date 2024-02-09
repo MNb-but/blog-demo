@@ -3,14 +3,14 @@ package com.bdqn.pojo;
 import java.util.Date;
 
 public class User {
-    private int userId; // 用户ID
+    private Integer userId; // 用户ID
     private String userName; // 用户名
     private String userPassword; // 用户密码
     private String userEmail; // 用户邮箱
     private String userProfilePhoto; // 用户头像
     private Date userRegistrationTime; // 注册时间
     private Date userBirthday; // 用户生日
-    private int userAge; // 用户年龄
+    private Integer userAge; // 用户年龄
     private String userPhoneNumber; // 用户手机号
 
     public User(){
