@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f2f3f5;
+    font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial !important;
+}
+
+/* 导航栏 */
+.el-header {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+    background-color: #ffffff;
+}
+
+.el-header .el-menu.el-menu--horizontal {
+    display: flex;
+    padding: 0 !important;
+    justify-content: space-evenly;
+}
+
+.el-header .el-menu-item {
+    font-size: 16px !important;
+}
+
+.el-header .el-menu .el-menu--horizontal {
+    padding: 0 20px;
+    border-bottom: none !important;
+}
+
+/* 搜索框 */
+.searchcontainer {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    /*水平方向居中*/
+    align-items: center;
+    /*垂直方向居中*/
+    /* background-color: thistle; */
+}
+
+/* 搜索框样式 */
+.search {
+    width: 400px;
+    height: 34px;
+    background-image: url(../image/搜索.png);
+    /*搜索框背景图片*/
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    /*设置背景图片不平铺*/
+    border-radius: 30px 0px 0px 30px;
+    padding-left: 50px;
+    background-position: 14px 4px;
+    /*设置背景图片的位置*/
+    color: rgb(184, 183, 183);
+    font-size: 16px;
+    border: 1px solid #e8e8ed;
+    /*去除边框*/
+}
+
+/* 搜索框获得焦点时样式 */
+.search:focus {
+    outline: coral solid 1px;
+    /*添加外边框*/
+}
+
+/* 搜索按钮样式 */
+.btnsearch {
+    width: 90px;
+    height: 36px;
+    border: none;
+    background-color: coral;
+    color: #fff;
+    border-radius: 0px 20px 20px 0px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 按钮悬浮时样式 */
+.btnsearch:hover {
+    background-color: #ff5900;
+}
+
+/* 头像 */
+.el-avatar {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+
+/* main */
+.el-main {
+    width: 1420px;
+    margin: 0 auto;
+    padding: 90px 0 0 0 !important;
+}
+
+.el-menu {
+    position: fixed;
+    border: none !important;
+    border-radius: 4px;
+    padding: 10px 10px !important;
+}
+
+.el-main .el-col-4 {
+    padding-right: 40px;
+}
+
+.el-main .el-col-19 {
+    padding-right: 40px;
+    padding-left: 250px;
+}
+
+.el-main .el-card.is-always-shadow {
+    box-shadow: none;
+}
+
+.el-main .el-card {
+    border: none;
+}
+
+.el-main .main-text {
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+/* main-left */
+.el-main .main-left {
+    position: fixed;
+    width: 210px;
+}
+
+.el-main .main-left .el-menu-item.is-active {
+    color: #f99805 !important;
+    /* background-color: #f8d9ab!important; */
+}
+
+.el-main .main-left .el-menu-item:hover {
+    background-color: #fcf4e8 !important;
+}
+
+.el-main .main-left .el-menu-item {
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.el-main .main-left .el-divider--horizontal {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 推荐博客 */
+.el-divider--horizontal {
+    margin: 0!important;
+}
+
+.main-text .bag {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+}
+
+.main-text .entry {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px 10px;
+    border-bottom: 1px solid #f2f3f5;
+}
+
+.main-text .entry div {
+    display: inline-block;
+}
+
+.main-text .entry-left {
+    width: 82%;
+}
+
+.main-text .entry-left h4,
+.main-text .entry-left p {
+    margin-bottom: 5px;
+}
+
+.main-text .entry p,
+.box-card .text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.main-text .entry p,
+.entry-foot-left,
+.entry-foot-rigth,
+.box-card-day {
+    font-size: 14px;
+    font-weight: 400;
+    color: #8A919F;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.el-tag {
+    height: 16px!important;
+    line-height: 16px!important;
+}
+
+.entry-foot {
+    display: flex!important;
+    justify-content: space-between;
+}
+
+.entry-img img {
+    flex: 0 0 auto;
+    width: 108px;
+    height: 72px;
+    margin-left: 24px;
+    border-radius: 4px;
+}
+
+/* card */
+.el-col-5 .box-card:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+.el-col-5 .box-card:nth-child(1) .el-card__body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.el-col-5 .box-card:nth-child(1) button {
+    margin-top: 5px;
+}
+
+.el-col-5 .box-card:nth-child(2) {
+    margin-bottom: 20px;
+}
+
+.box-card h3 {
+    margin-bottom: 10px;
+}
+
+.box-card .text {
+    color: #333!important;
+}
+
+.box-card .text p {
+    height: 42px;
+    line-height: 42px;
+}
+
+.box-card .text strong {
+    padding-right: 15px;
+}

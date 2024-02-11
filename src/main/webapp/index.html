@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客论坛</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/vue.js"></script>
+  <script src="element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+  <script src="./js/axios-0.18.0.js"></script>
+</head>
+
+<body>
+
+  <el-container id="app">
+    <el-header>
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+
+        <el-menu-item>
+          <h2>博客论坛</h2>
+        </el-menu-item>
+        <el-menu-item>首页</el-menu-item>
+        <el-menu-item>热点讨论</el-menu-item>
+        <el-menu-item>活动中心</el-menu-item>
+        <el-menu-item>拉力竞赛</el-menu-item>
+        <el-menu-item>商城</el-menu-item>
+        <el-menu-item>文字</el-menu-item>
+        <el-menu-item>
+          <div class="searchcontainer">
+            <input type="text" placeholder="搜索内容" class="search">
+            <button class="btnsearch">搜索</button>
+          </div>
+        </el-menu-item>
+        <el-menu-item>个人中心</el-menu-item>
+        <el-menu-item>创作中心</el-menu-item>
+        <el-menu-item>帮助中心</el-menu-item>
+        <el-menu-item>我的文章</el-menu-item>
+      </el-menu>
+    </el-header>
+
+    <el-main>
+      <!-- <div class="main-left"> -->
+      <el-row class="tac">
+        <el-col :span="4">
+          <div class="main-left">
+            <el-menu default-active="1" class="el-menu-vertical-demo">
+              <el-menu-item>
+                <i class="el-icon-menu"></i>
+                <span slot="title">推荐主题</span>
+              </el-menu-item>
+              <el-divider></el-divider>
+
+              <el-menu-item index="1">
+                <i class="el-icon-menu"></i>
+                <span slot="title">综合</span>
+              </el-menu-item>
+              <el-menu-item index="2">
+                <i class="el-icon-menu"></i>
+                <span slot="title">后端</span>
+              </el-menu-item>
+              <el-menu-item index="3">
+                <i class="el-icon-menu"></i>
+                <span slot="title">前端</span>
+              </el-menu-item>
+              <el-menu-item index="4">
+                <i class="el-icon-setting"></i>
+                <span slot="title">Android</span>
+              </el-menu-item>
+              <el-menu-item index="5">
+                <i class="el-icon-setting"></i>
+                <span slot="title">iOS</span>
+              </el-menu-item>
+              <el-menu-item index="6">
+                <i class="el-icon-setting"></i>
+                <span slot="title">人工智能</span>
+              </el-menu-item>
+              <el-menu-item index="7">
+                <i class="el-icon-setting"></i>
+                <span slot="title">开发工具</span>
+              </el-menu-item>
+              <el-menu-item index="8">
+                <i class="el-icon-setting"></i>
+                <span slot="title">阅读</span>
+              </el-menu-item>
+              <el-menu-item index="9">
+                <i class="el-icon-setting"></i>
+                <span slot="title">排行榜</span>
+              </el-menu-item>
+            </el-menu>
+          </div>
+
+        </el-col>
+
+
+
+        <el-col :span="19">
+          <template>
+            <div class="main-text">
+              <span class="bag">推荐文章</span>
+              <el-divider></el-divider>
+
+
+              <div class="entry" v-for="(item,index) in 8" :key="index">
+                <div class="entry-left">
+                  <h4>2024款：最新前端技术趋势</h4>
+                  <p>上一次的时候聊了 那么些已经落后的前端开发技术 。但是光知道什么技术落后了是不够的，咱们还得知道 前端最新的技术趋势是什么。所以，今天这篇文章，咱们就来聊一聊，最新前端技术趋势。</p>
+                  <div class="entry-foot">
+                    <div class="entry-foot-left">
+                      <span>雨纷纷</span>
+                      <el-divider direction="vertical"></el-divider>
+                      <span>旧故里</span>
+                      <el-divider direction="vertical"></el-divider>
+                      <span>草木深</span>
+                    </div>
+
+                    <div class="entry-foot-rigth">
+                      <el-tag type="warning">前端</el-tag>
+                      <el-tag type="warning">程序员</el-tag>
+                    </div>
+                  </div>
+                </div>
+                <div class="entry-img">
+                  <img src="./image/前端图.png" alt="">
+                </div>
+              </div>
+            </div>
+
+
+          </template>
+        </el-col>
+
+        <el-col :span="5">
+          <el-card class="box-card">
+            <div>
+              <h3>晚上好！</h3>
+              <span class="box-card-day">点亮博客论坛的每一天</span>
+            </div>
+            <div>
+              <el-button type="warning" plain>点亮</el-button>
+            </div>
+          </el-card>
+
+
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>文章榜</span>
+              <el-button style="float: right; padding: 3px 0; color: #8A919F;" type="text">换一换</el-button>
+            </div>
+            <div v-for="(o,index) in 5" :key="index" class="text item">
+              <p>
+                <strong>{{ index + 1 }}</strong> {{'列表内列表内容列表内容列表内容容 ' + o }}
+              </p>
+            </div>
+          </el-card>
+
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>作者榜</span>
+              <el-button style="float: right; padding: 3px 0; color: #8A919F;" type="text">换一换</el-button>
+            </div>
+            <div v-for="(o,index) in 5" :key="index" class="text item">
+              <p>
+                <strong>{{ index + 1 }}</strong> {{'列表内列表内容列表内容列表内容容 ' + o }}
+              </p>
+            </div>
+          </el-card>
+        </el-col>
+
+
+
+      </el-row>
+    </el-main>
+
+  </el-container>
+  <div id="app">
+
+  </div>
+
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
