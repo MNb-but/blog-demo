@@ -1,0 +1,129 @@
+.el-menu--horizontal .an {
+    width: 75%;
+}
+
+.main-left .el-button {
+    width: 100%;
+    border-radius: 3px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    background-color: #f69b1c;
+    border: #f69b1c;
+}
+
+.main-left .el-submenu__title {
+    font-size: 16px!important;
+}
+
+.main-left .el-submenu ul {
+    padding: 0!important;
+}
+
+.el-submenu .el-menu-item {
+    color: #909399;
+    min-width: 0!important;
+    padding-left: 55px!important;
+}
+
+.el-main .main-left .el-menu-item:hover {
+    background-color: #fcf4e8!important;
+}
+
+
+.main-text {
+    background-color: #f2f3f5!important;
+}
+
+.bag,
+.entry,
+.main-head {
+    background-color: #ffffff;
+}
+
+.main-head {
+    display: flex;
+    height: 50px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+}
+
+.bag {
+    border-radius: 4px 4px 0 0;
+}
+
+
+.main-head .main-head-img {
+    width: 80px;
+}
+
+.main-head .main-head-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.box-card .text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box-card .text>div {
+    width: 26.7%;
+    background-color: #f2f3f5;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.box-card .text .button {
+    margin-top: 20px;
+}
+
+.main-text .box-card {
+    margin-bottom: 30px;
+}
+
+.text-list {
+    height: 70px;
+    border-bottom: 1px solid #e5e6eb;
+    margin-bottom: 10px;
+}
+.recommend>p,
+.text-list>p {
+    height: 30px;
+    line-height: 30px;
+}
+
+.text-list>p:nth-child(2) {
+    color: #909399;
+    font-size: 15px;
+}
+
+.el-dropdown:hover span{
+    color: #f39e28;
+}
+
+.el-dropdown {
+    float: right!important;
+}
+
+.recommend {
+    margin-bottom: 20px;
+}
+
+.recommend>p:nth-child(2) {
+    color: #909399;
+    font-size: 15px;
+}
+
+.recommend .el-tag {
+    width: 20px;
+    height: 19px!important;
+    padding: 2px 3px;
+    color: #ffffff!important;
+    background-color: #f39e28!important;
+    margin-left: 10px;
+}
