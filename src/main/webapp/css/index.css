@@ -150,7 +150,7 @@ body {
 
 .el-main .main-left .el-divider--horizontal {
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto!important;
 }
 
 /* 推荐博客 */
