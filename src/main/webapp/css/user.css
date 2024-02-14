@@ -9,7 +9,11 @@
     margin-bottom: 10px;
     font-weight: 500;
     background-color: #f69b1c;
-    border: #f69b1c;
+    border: #252321;
+}
+
+.main-left .el-button:hover {
+    background-color: #fab64f;
 }
 
 .main-left .el-submenu__title {
