@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿舍管理系统</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/selectDor.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./icons-main/font/bootstrap-icons.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/axios-0.18.0.js"></script>
+    <link rel="icon" href="image/visit.png">
+</head>
+
+<body>
+    <div class="app">
+        <!-- 菜单栏 -->
+        <div class="left-box">
+            <!-- 菜单栏头部 -->
+            <p>
+            <div class=" one" data-toggle="collapse" href="#multiCollapseExample" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1"><img src="./image/visit.png" alt=""><span>博客管理平台</span></div>
+            </p>
+
+            <p>
+            <div class="btn" data-toggle="collapse" role="button"><i class="bi bi-pentagon-fill"></i><span><a
+                        href="null.html">首页</a></span></div>
+            </p>
+
+            <!-- 模块一 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1"><i class="bi bi-nut-fill"></i><span>用户管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <i class="bi bi-grid-fill"></i>
+                        <span><a href="admin.html">用户信息</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <i class="bi bi-person-fill"></i>
+                        <span><a href="null.html">黑名单</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块二 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample2"><i class="bi bi-gear-fill"></i><span>文章管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse show" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <i class="bi bi-grid-fill"></i>
+                        <span><a href="null.html">文章信息</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse show" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <i class="bi bi-person-fill"></i>
+                        <span><a href="article.html" class="vo">文章审核</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块三 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample3"><i class="bi bi-gear-fill"></i><span>评论管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body">
+                        <i class="bi bi-reception-4"></i>
+                        <span><a href="null.html">评论信息</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据显示 -->
+        <div class="right-box">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <i class="bi bi-text-indent-left"></i>
+                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                    <li class="breadcrumb-item"><a href="#">文章管理</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">文章审核</li>
+                </ol>
+                <div class="exit">
+                    <img src="./image/visit.png" alt="">
+                    <span><a href="login.html">退出</a></span>
+                </div>
+            </nav>
+
+            <!-- main -->
+            <div class="main">
+
+                <template>
+                    <el-table :data="tableData" border style="width: 100%">
+                        <el-table-column type="index" label="序号" align="center" width="150px">
+                        </el-table-column>
+                        <el-table-column prop="articleTitle" label="文章标题" align="center">
+
+                        </el-table-column>
+                        <el-table-column prop="userName" label="作者" align="center">
+
+                        </el-table-column>
+                        <el-table-column prop="labelName" label="标签" align="center">
+
+                        </el-table-column>
+                        <el-table-column prop="articleViews" label="浏览次数" align="center">
+
+                        </el-table-column>
+                        <el-table-column prop="articleCommentCount" label="评论数" align="center">
+
+                        </el-table-column>
+                        <el-table-column prop="articleDate" label="创建时间" align="center">
+
+                        </el-table-column>
+                        <el-table-column label="操作" align="center" width="400px">
+
+                            <template slot-scope="scope">
+                                <el-row>
+                                    <el-button @click="startEdit(scope.row)" type="primary" style="margin-left: 16px;">查看</el-button>
+                                    <el-button type="primary" @click="pass(scope.row)">通过</el-button>
+                                    <el-button type="danger" @click="del(scope.row)">不通过</el-button>
+                                </el-row>
+                            </template>
+
+                        </el-table-column>
+                    </el-table>
+                </template>
+
+
+                <!--分页工具条-->
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                               :current-page="currentPage" :page-sizes="[4, 8]" :page-size="pageSize"
+                               layout="total, sizes, prev, pager, next, jumper" :total="totalCount">
+                </el-pagination>
+
+
+                <!-- 查看dialog -->
+                  <el-drawer
+                    title="文章内容"
+                    :visible.sync="drawer"
+                    :direction="direction"
+                    :before-close="handleClose">
+                    <span>{{ this.tableEdition.articleContent }}</span>
+                  </el-drawer>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '.app',
+
+            created() {
+                this.selectAll();
+            },
+
+            methods: {
+                // 查看所有宿舍
+                selectAll() {
+                    axios.get("/articles").then((res) => {
+                        this.tableData = res.data.data
+                    })
+                },
+
+                pass(row) {
+                    this.dor = JSON.parse(JSON.stringify(row));
+
+                    this.passOne()
+                },
+                // 通过方法
+                passOne() {
+                    this.$confirm('是否将该文章通过审核, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        axios.put("/articles/passOne",this.dor).then((res) => {
+                            if (res.data.code == 20031) {
+                                this.$message.success("通过审核")
+                            }else if (res.data.code == 20030) {
+                                this.$message.error("未通过审核")
+                            } else {
+                                this.$message.error(res.data.msg)
+                            }
+                        })
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消操作'
+                        });
+                    }).finally(() => {
+                        this.selectAll()
+                    });
+                },
+
+                del(row){
+                    this.dor = JSON.parse(JSON.stringify(row));
+
+                    this.delByDorId();
+                },
+
+                // 不通过方法
+                delByDorId(){
+                    this.$confirm('是否将该文章取消通过审核, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        axios.put("/articles/passTow",this.dor).then((res) => {
+                            if (res.data.code == 20031) {
+                                this.$message.success("已经通过审核")
+                            }else if (res.data.code == 20030) {
+                                this.$message.error("取消审核失败")
+                            } else {
+                                this.$message.error(res.data.msg)
+                            }
+                        })
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消操作'
+                        });
+                    }).finally(() => {
+                        this.selectAll()
+                    });
+                },
+
+                // 数据回显
+                startEdit(row){
+                    this.tableEdition = JSON.parse(JSON.stringify(row));
+
+                    this.drawer = true;
+                },
+
+
+                // 页数变化重新赋值且查询
+                handleSizeChange(val) {
+                    // console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+                    this.selectAll();
+                },
+                handleCurrentChange(val) {
+                    // console.log(`当前页: ${val}`);
+                    this.currentPage = val;
+                    this.selectAll();
+                }
+            },
+
+            data() {
+                return {
+                    drawer: false,
+                    direction: 'rtl',
+
+                    //每页查询数
+                    pageSize: 4,
+                    //总记录数
+                    totalCount: 100,
+                    // 当前页码
+                    currentPage: 1,
+
+                    // 模板数据
+                    dor: {
+                        articleId: '',
+                        userId: '',
+                        sortId: '',
+                        labelId: '',
+                        articleTitle: '',
+                        articleContent: '',
+                        articleViews: '',
+                        articleCommentCount: '',
+                        articleDate: '',
+                        articleLikeCount: '',
+                        userName: '',
+                        labelName: ''
+                    },
+
+                    tableEdition: {
+                        articleId: '',
+                        userId: '',
+                        sortId: '',
+                        labelId: '',
+                        articleTitle: '',
+                        articleContent: '',
+                        articleViews: '',
+                        articleCommentCount: '',
+                        articleDate: '',
+                        articleLikeCount: '',
+                        userName: '',
+                        labelName: ''
+                    },
+
+                    // 表格数据
+                    tableData: [{
+                        articleId: '',
+                        userId: '',
+                        sortId: '',
+                        labelId: '',
+                        articleTitle: '',
+                        articleContent: '',
+                        articleViews: '',
+                        articleCommentCount: '',
+                        articleDate: '',
+                        articleLikeCount: '',
+                        userName: '',
+                        labelName: ''
+                    }],
+
+
+                    handleClose(done) {
+                        this.$confirm('确认关闭？')
+                            .then(_ => {
+                                done();
+                            })
+                            .catch(_ => { });
+                    },
+
+                    formLabelWidth: '120px'
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

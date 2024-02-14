@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab55ba2c-5ac5-453f-a2c3-7866f38c7a98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/ArticlesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/ArticlesDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/pojo/Articles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/ArticlesService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/ArticlesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/ProjectExceptionAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/ProjectExceptionAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin.html" afterDir="false" />
-    </list>
+    <list default="true" id="ab55ba2c-5ac5-453f-a2c3-7866f38c7a98" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +132,7 @@
       <workItem from="1707550562033" duration="1196000" />
       <workItem from="1707624594484" duration="2776000" />
       <workItem from="1707714434872" duration="3014000" />
-      <workItem from="1707885552335" duration="13751000" />
+      <workItem from="1707885552335" duration="14097000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <option name="closed" value="true" />
@@ -239,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707896382425</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="提交">
+      <option name="closed" value="true" />
+      <created>1707905998228</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1707905998228</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
