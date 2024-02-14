@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿舍管理系统</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/selectDor.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./icons-main/font/bootstrap-icons.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/axios-0.18.0.js"></script>
+    <link rel="icon" href="image/visit.png">
+</head>
+
+<body>
+    <div class="app">
+        <!-- 菜单栏 -->
+        <div class="left-box">
+            <!-- 菜单栏头部 -->
+            <p>
+            <div class=" one" data-toggle="collapse" href="#multiCollapseExample" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1"><img src="./image/visit.png" alt=""><span>博客管理平台</span></div>
+            </p>
+
+            <p>
+            <div class="btn" data-toggle="collapse" role="button"><i class="bi bi-pentagon-fill"></i><span><a
+                        href="index.html">首页</a></span></div>
+            </p>
+
+            <!-- 模块一 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1"><i class="bi bi-nut-fill"></i><span>用户管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse show" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <i class="bi bi-grid-fill"></i>
+                        <span><a href="./selectDor.html" class="vo">用户信息</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse show" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <i class="bi bi-person-fill"></i>
+                        <span><a href="./insertDor.html">黑名单</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块二 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample2"><i class="bi bi-gear-fill"></i><span>文章管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <i class="bi bi-grid-fill"></i>
+                        <span><a href="./selectEmp.html">文章信息</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <i class="bi bi-person-fill"></i>
+                        <span><a href="./insertEmp.html">文章审核</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块三 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample3"><i class="bi bi-gear-fill"></i><span>评论管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body">
+                        <i class="bi bi-reception-4"></i>
+                        <span><a href="./health.html">评论信息</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据显示 -->
+        <div class="right-box">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <i class="bi bi-text-indent-left"></i>
+                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                    <li class="breadcrumb-item"><a href="#">用户管理</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">用户信息</li>
+                </ol>
+                <div class="exit">
+                    <img src="./image/visit.png" alt="">
+                    <span><a href="login.html">退出</a></span>
+                </div>
+            </nav>
+
+            <!-- main -->
+            <div class="main">
+                <h2 style="text-align: center; margin-top: 20%;">此功能暂未完善...</h2>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

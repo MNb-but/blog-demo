@@ -1,0 +1,35 @@
+/* main */
+.main {
+    height: 92%;
+    padding: 20px 30px;
+    /* background-color: #021428; */
+    text-align: left;
+}
+
+.main form {
+    margin-bottom: 10px;
+}
+
+.main form button {
+    margin-left: 10px;
+}
+
+.main .el-pagination {
+    padding-top: 20px;
+    margin-left: -10px;
+}
+
+form .el-input {
+    width: 149px!important;
+}
+
+.el-dialog__body {
+    padding-left: 60px!important;
+}
+
+.el-form-item__label {
+    width: 120px!important;
+}
+.el-form-item__content {
+    /*padding-left: 120px;*/
+}

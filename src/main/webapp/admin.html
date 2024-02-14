@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿舍管理系统</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/selectDor.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./icons-main/font/bootstrap-icons.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/axios-0.18.0.js"></script>
+    <link rel="icon" href="image/visit.png">
+</head>
+
+<body>
+    <div class="app">
+        <!-- 菜单栏 -->
+        <div class="left-box">
+            <!-- 菜单栏头部 -->
+            <p>
+            <div class=" one" data-toggle="collapse" href="#multiCollapseExample" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1"><img src="./image/visit.png" alt=""><span>博客管理平台</span></div>
+            </p>
+
+            <p>
+            <div class="btn" data-toggle="collapse" role="button"><i class="bi bi-pentagon-fill"></i><span><a
+                        href="null.html">首页</a></span></div>
+            </p>
+
+            <!-- 模块一 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample1"><i class="bi bi-nut-fill"></i><span>用户管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse show" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <i class="bi bi-grid-fill"></i>
+                        <span><a href="./selectDor.html" class="vo">用户信息</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse show" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <i class="bi bi-person-fill"></i>
+                        <span><a href="null.html">黑名单</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块二 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample2"><i class="bi bi-gear-fill"></i><span>文章管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <i class="bi bi-grid-fill"></i>
+                        <span><a href="null.html">文章信息</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <i class="bi bi-person-fill"></i>
+                        <span><a href="./insertEmp.html">文章审核</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模块三 -->
+            <p>
+            <div class="btn" data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false"
+                aria-controls="multiCollapseExample3"><i class="bi bi-gear-fill"></i><span>评论管理</span></div>
+            </p>
+
+            <div class="col-12">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body">
+                        <i class="bi bi-reception-4"></i>
+                        <span><a href="null.html">评论信息</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据显示 -->
+        <div class="right-box">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <i class="bi bi-text-indent-left"></i>
+                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                    <li class="breadcrumb-item"><a href="#">用户管理</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">用户信息</li>
+                </ol>
+                <div class="exit">
+                    <img src="./image/visit.png" alt="">
+                    <span><a href="login.html">退出</a></span>
+                </div>
+            </nav>
+
+            <!-- main -->
+            <div class="main">
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <span>宿舍号</span>
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input v-model="dorId" type="text" class="form-control" id="inputPassword2" placeholder="输入宿舍号" >
+                    </div>
+                    <button type="button" class="btn btn-primary mb-2" @click="selectByDorId()">查询</button>
+                    <button type="button" class="btn btn-primary mb-2" @click="dialogInsertVisible = true">添加</button>
+                    <button type="button" class="btn btn-primary mb-2" @click="selectAll()">查询全部</button>
+                </form>
+
+
+
+
+                <template>
+                    <el-table :data="tableData" border style="width: 100%">
+                        <el-table-column type="index" label="序号" align="center" width="150px">
+                        </el-table-column>
+                        <el-table-column prop="dorId" label="宿舍号" align="center">
+                            <template slot-scope="scope">
+                                {{ scope.row.dorId + '号'}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="gender" label="宿舍类别" align="center">
+                            <template slot-scope="scope">
+                                {{ scope.row.gender + '寝'}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="maxNum" label="寝室规格" align="center">
+                            <template slot-scope="scope">
+                                {{ scope.row.maxNum + '人'}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="ingNum" label="目前人数" align="center">
+                            <template slot-scope="scope">
+                                {{ scope.row.ingNum + '人'}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="dorm" label="宿舍楼" align="center">
+                            <template slot-scope="scope">
+                                {{ scope.row.dorm + '号楼'}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="操作" align="center" width="400px">
+
+                            <template slot-scope="scope">
+                                <el-row>
+                                    <el-button type="primary" @click="selectEmpAll(scope.row)">查看</el-button>
+                                    <el-button type="primary" @click="startEdit(scope.row)">修改</el-button>
+                                    <el-button type="danger" @click="del(scope.row)">删除</el-button>
+                                </el-row>
+                            </template>
+
+                        </el-table-column>
+                    </el-table>
+                </template>
+
+
+                <!--分页工具条-->
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                               :current-page="currentPage" :page-sizes="[4, 8]" :page-size="pageSize"
+                               layout="total, sizes, prev, pager, next, jumper" :total="totalCount">
+                </el-pagination>
+
+
+                <!-- 查看dialog -->
+                <el-dialog title="宿舍人员" :visible.sync="dialogTableVisible">
+                    <el-table :data="gridData">
+                        <el-table-column type="index" label="序号" align="center" width="150"></el-table-column>
+                        <el-table-column property="name" label="姓名" align="center" width="200"></el-table-column>
+                        <el-table-column property="classId" label="班级" align="center"></el-table-column>
+                        <el-table-column property="teacher" label="班主任" align="center"></el-table-column>
+                    </el-table>
+                </el-dialog>
+
+
+                <!-- 添加dialog -->
+                <el-dialog title="添加宿舍" :visible.sync="dialogInsertVisible">
+                    <el-form :model="InsertDor" :rules="rules" ref="ruleForm" class="demo-ruleForm">
+                        <el-form-item label="寝室编号" prop="dorId" :label-width="formLabelWidth">
+                            <el-input v-model="InsertDor.dorId" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="目前人数" prop="ingNum" :label-width="formLabelWidth">
+                            <el-input v-model="InsertDor.ingNum" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="寝室类别" prop="gender" :label-width="formLabelWidth">
+                            <el-input v-model="InsertDor.gender" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="寝室规格" prop="maxNum" :label-width="formLabelWidth">
+                            <el-select v-model="InsertDor.maxNum" placeholder="请选择寝室规格">
+                                <el-option label="普通八人间" value="8"></el-option>
+                                <el-option label="普通六人间" value="6"></el-option>
+                                <el-option label="普通四人间" value="4"></el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="宿舍楼栋" prop="dorm" :label-width="formLabelWidth">
+                            <el-input v-model="InsertDor.dorm" autocomplete="off"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button @click="resetForm('ruleForm')">取 消</el-button>
+                        <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
+                    </div>
+                </el-dialog>
+
+
+                <!-- 修改窗 -->
+                <el-dialog title="修改信息" :visible.sync="dialogFormVisible">
+                    <el-form :model="dor">
+                        <el-form-item label="目前人数" :label-width="formLabelWidth">
+                            <el-input v-model="dorEdition.ingNum" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="寝室规格" :label-width="formLabelWidth">
+                            <el-select v-model="dorEdition.maxNum" placeholder="请选择寝室规格">
+                                <el-option label="普通八人间" value="8"></el-option>
+                                <el-option label="普通六人间" value="6"></el-option>
+                                <el-option label="普通四人间" value="4"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button @click="dialogFormVisible = false">取 消</el-button>
+                        <el-button type="primary" @click="updateDor()">确 定</el-button>
+                    </div>
+                </el-dialog>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '.app',
+
+            mounted() {
+                this.selectAll();
+            },
+
+            methods: {
+                // 查看所有宿舍
+                selectAll() {
+                    axios({
+                        method: "post",
+                        url: "http://localhost:8080/Dormitory/dormitory/selectByPage?currentPage=" + this.currentPage + "&pageSize=" + this.pageSize,
+                    }).then(resp => {
+                        //设置表格数据
+                        this.tableData = resp.data.getTotalCount;
+                        //设置表格总记录数
+                        this.totalCount = resp.data.totalCount;
+                    })
+                },
+
+                // 根据宿舍编号查看宿舍人员
+                selectEmpAll(row){
+                    this.gridData = JSON.parse(JSON.stringify(row));
+
+                    let that = this
+
+                    this.dialogTableVisible = true
+
+                    axios({
+                        method: "post",
+                        url: "http://localhost:8080/Dormitory/dormitory/selectEmpAll",
+                        data: that.gridData.dorId
+                    }).then(function (resp) {
+                        that.gridData = resp.data;
+                    })
+
+                    this.gridData = [{}]
+                },
+
+                // 查询对应的dorId
+                selectByDorId(){
+                    let that = this
+
+                    axios({
+                        method: "post",
+                        url: "http://localhost:8080/Dormitory/dormitory/selectByDorId",
+                        data: that.dorId
+                    }).then(function (resp) {
+                        that.tableData = resp.data;
+                    })
+                },
+
+
+                // 修改方法
+                updateDor(){
+                    let that = this
+
+                    axios({
+                        method: "post",
+                        url: "http://localhost:8080/Dormitory/dormitory/update",
+                        data: that.dorEdition
+                    }).then(function (resp) {
+                        if (resp.data == "up") {
+                            that.dialogFormVisible = false
+
+                            that.selectAll()
+
+                            that.$message({
+                                message: '修改成功!',
+                                type: 'success'
+                            });
+                        }
+                    })
+                },
+
+                del(row){
+                    this.dor = JSON.parse(JSON.stringify(row));
+
+                    let that = this;
+
+                    that.delByDorId();
+                },
+
+                // 删除方法
+                delByDorId(){
+                    this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+
+                        let that = this;
+
+                        axios({
+                            method: "post",
+                            url: "http://localhost:8080/Dormitory/dormitory/delByDorId",
+                            data: that.dor.dorId
+                        }).then(function (resp) {
+                            if (resp.data == "de") {
+
+                                that.selectAll()
+
+                                that.$message({
+                                    message: '删除成功!',
+                                    type: 'success'
+                                });
+                            }
+                        })
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
+                    });
+                },
+
+                addDor(){
+                    this.dialogInsertVisible = true
+
+                    let that = this;
+
+                    axios({
+                        method: "post",
+                        url: "http://localhost:8080/Dormitory/dormitory/addDor",
+                        data: that.InsertDor
+                    }).then(function (resp) {
+                        if (resp.data == "add") {
+
+                            that.dialogInsertVisible = false
+
+                            that.selectAll()
+
+                            that.$message({
+                                message: '添加成功!',
+                                type: 'success'
+                            });
+                        }
+                    })
+                },
+
+                // 数据回显
+                startEdit(row){
+                    this.dorEdition = JSON.parse(JSON.stringify(row));
+
+                    this.dialogFormVisible = true;
+                },
+
+                // 页数变化重新赋值且查询
+                handleSizeChange(val) {
+                    // console.log(`每页 ${val} 条`);
+                    this.pageSize = val;
+                    this.selectAll();
+                },
+                handleCurrentChange(val) {
+                    // console.log(`当前页: ${val}`);
+                    this.currentPage = val;
+                    this.selectAll();
+                },
+                submitForm(formName) {
+                    this.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            this.addEmp()
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    });
+                },
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                    this.dialogInsertVisible = false
+                }
+            },
+
+            data() {
+                return {
+                    rules: {
+                        dorId: [
+                            {required: true, message: '请填写宿舍号', trigger: 'blur'},
+                            { type: 'number', message: '必须为数字值'}
+                        ],
+                        ingNum: [
+                            {required: true, message: '请填写目前人数', trigger: 'blur'},
+                            { type: 'number', message: '必须为数字值'}
+                        ],
+                        gender: [
+                            {required: true, message: '请填写寝室类别', trigger: 'blur'}
+                        ],
+                        maxNum: [
+                            {required: true, message: '请选择寝室规格', trigger: 'change'}
+                        ],
+                        dorm: [
+                            {required: true, message: '请填写宿舍楼栋', trigger: 'blur'}
+                        ]
+                    },
+                    //每页查询数
+                    pageSize: 4,
+                    //总记录数
+                    totalCount: 100,
+                    // 当前页码
+                    currentPage: 1,
+
+                    // 模板数据
+                    dor: {
+                        id: '',
+                        dorId: '',
+                        gender: '',
+                        maxNum: '',
+                        ingNum: '',
+                        dorm: 7
+                    },
+
+                    InsertDor: {
+                        id: '',
+                        dorId: '',
+                        gender: '',
+                        maxNum: '',
+                        ingNum: '',
+                        dorm: 7
+                    },
+
+                    dorEdition: {
+                        id: '',
+                        dorId: '',
+                        gender: '',
+                        maxNum: '',
+                        ingNum: '',
+                        dorm: 7
+                    },
+
+                    // 表格数据
+                    tableData: [{
+                        id: 1,
+                        dorId: 7526,
+                        gender: '男',
+                        maxNum: 6,
+                        ingNum: 6,
+                        dorm: 7
+                    }, {
+                        id: 1,
+                        dorId: 7526,
+                        gender: '男',
+                        maxNum: 6,
+                        ingNum: 6,
+                        dorm: 7
+                    }, {
+                        id: 1,
+                        dorId: 7526,
+                        gender: '男',
+                        maxNum: 6,
+                        ingNum: 6,
+                        dorm: 7
+                    }, {
+                        id: 1,
+                        dorId: 7526,
+                        gender: '男',
+                        maxNum: 6,
+                        ingNum: 6,
+                        dorm: 7
+                    }],
+
+                    gridData: [{
+                        id: 1,
+                        name: '王小虎',
+                        gender: '男',
+                        classId: 'A900',
+                        teacher: '虎虎'
+                    }, {
+                        id: 1,
+                        name: '王小虎',
+                        gender: '男',
+                        classId: 'A900',
+                        teacher: '虎虎'
+                    }, {
+                        id: 1,
+                        name: '王小虎',
+                        gender: '男',
+                        classId: 'A900',
+                        teacher: '虎虎'
+                    }, {
+                        id: 1,
+                        name: '王小虎',
+                        gender: '男',
+                        classId: 'A900',
+                        teacher: '虎虎'
+                    }],
+
+                    form: {
+                        id: '',
+                        dorId: '',
+                        gender: '男',
+                        maxNum: '',
+                        ingNum: '',
+                        dorm: 7
+                    },
+
+                    dialogTableVisible: false,
+
+                    dialogFormVisible: false,
+
+                    dialogInsertVisible: false,
+
+                    handleClose(done) {
+                        this.$confirm('确认关闭？')
+                            .then(_ => {
+                                done();
+                            })
+                            .catch(_ => { });
+                    },
+
+                    formLabelWidth: '120px'
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
