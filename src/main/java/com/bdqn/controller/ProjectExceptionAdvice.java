@@ -27,6 +27,7 @@ public class ProjectExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public Result doException(Exception ex){
         System.out.println("出现异常了！");
+        System.out.println(ex);
         return new Result(Code.SYSTEM_UNKNOW_ERR, null, "系统繁忙");
     }
 }

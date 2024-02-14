@@ -112,56 +112,34 @@
 
             <!-- main -->
             <div class="main">
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                        <span>用户名</span>
-                    </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                        <input v-model="dorId" type="text" class="form-control" id="inputPassword2" placeholder="输入用户名" >
-                    </div>
-                    <button type="button" class="btn btn-primary mb-2" @click="selectByDorId()">查询</button>
-                    <button type="button" class="btn btn-primary mb-2" @click="selectAll()">查询全部</button>
-                </form>
 
                 <template>
                     <el-table :data="tableData" border style="width: 100%">
                         <el-table-column type="index" label="序号" align="center" width="150px">
                         </el-table-column>
                         <el-table-column prop="userName" label="用户名" align="center">
-                            <template slot-scope="scope">
 
-                            </template>
                         </el-table-column>
                         <el-table-column prop="userPassword" label="用户密码" align="center">
-                            <template slot-scope="scope">
 
-                            </template>
                         </el-table-column>
                         <el-table-column prop="userEmail" label="用户邮箱" align="center">
-                            <template slot-scope="scope">
 
-                            </template>
                         </el-table-column>
                         <el-table-column prop="userRegistrationTime" label="注册时间" align="center">
-                            <template slot-scope="scope">
 
-                            </template>
                         </el-table-column>
                         <el-table-column prop="userBirthday" label="用户生日" align="center">
-                            <template slot-scope="scope">
 
-                            </template>
                         </el-table-column>
                         <el-table-column prop="userPhoneNumber" label="联系电话" align="center">
-                            <template slot-scope="scope">
 
-                            </template>
                         </el-table-column>
-                        <el-table-column label="操作" align="center" width="400px">
+                        <el-table-column label="操作" align="center" width="200px">
 
                             <template slot-scope="scope">
                                 <el-row>
-                                    <el-button type="danger" @click="del(scope.row)">删除</el-button>
+                                    <el-button type="danger">删除</el-button>
                                 </el-row>
                             </template>
 
@@ -193,55 +171,11 @@
             methods: {
                 // 查看所有宿舍
                 selectAll() {
-                    // axios({
-                    //     method: "post",
-                    //     url: "http://localhost:8080/Dormitory/dormitory/selectByPage?currentPage=" + this.currentPage + "&pageSize=" + this.pageSize,
-                    // }).then(resp => {
-                    //     //设置表格数据
-                    //     this.tableData = resp.data.getTotalCount;
-                    //     //设置表格总记录数
-                    //     this.totalCount = resp.data.totalCount;
-                    // })
                     axios.get("/user").then((res) => {
                         this.tableData = res.data.data
                     })
                 },
 
-                // 根据宿舍编号查看宿舍人员
-                selectEmpAll(row){
-                    this.gridData = JSON.parse(JSON.stringify(row));
-
-                    let that = this
-
-                    this.dialogTableVisible = true
-
-                    axios({
-                        method: "post",
-                        url: "http://localhost:8080/Dormitory/dormitory/selectEmpAll",
-                        data: that.gridData.dorId
-                    }).then(function (resp) {
-                        that.gridData = resp.data;
-                    })
-
-                    this.gridData = [{}]
-                },
-
-
-                del(row){
-                    this.dor = JSON.parse(JSON.stringify(row));
-
-                    let that = this;
-
-                    that.delByDorId();
-                },
-
-
-                // 数据回显
-                startEdit(row){
-                    this.dorEdition = JSON.parse(JSON.stringify(row));
-
-                    this.dialogFormVisible = true;
-                },
 
                 // 页数变化重新赋值且查询
                 handleSizeChange(val) {
@@ -254,20 +188,6 @@
                     this.currentPage = val;
                     this.selectAll();
                 },
-                submitForm(formName) {
-                    this.$refs[formName].validate((valid) => {
-                        if (valid) {
-                            this.addEmp()
-                        } else {
-                            console.log('error submit!!');
-                            return false;
-                        }
-                    });
-                },
-                resetForm(formName) {
-                    this.$refs[formName].resetFields();
-                    this.dialogInsertVisible = false
-                }
             },
 
             data() {
@@ -279,7 +199,8 @@
                     // 当前页码
                     currentPage: 1,
 
-                    dorEdition: {
+                    // 表格数据
+                    tableData: [{
                         userId: '',
                         userName: '',
                         userPassword: '',
@@ -289,34 +210,7 @@
                         userBirthday: '',
                         userAge: '',
                         userPhoneNumber: ''
-                    },
-
-                    // 表格数据
-                    tableData: [{
-                        userId: '',
-                        userName: 'www',
-                        userPassword: '',
-                        userEmail: '',
-                        userProfilePhoto: '',
-                        userRegistrationTime: '',
-                        userBirthday: '',
-                        userAge: '',
-                        userPhoneNumber: ''
                     }],
-
-                    dialogTableVisible: false,
-
-                    dialogFormVisible: false,
-
-                    dialogInsertVisible: false,
-
-                    handleClose(done) {
-                        this.$confirm('确认关闭？')
-                            .then(_ => {
-                                done();
-                            })
-                            .catch(_ => { });
-                    },
 
                     formLabelWidth: '120px'
                 }
