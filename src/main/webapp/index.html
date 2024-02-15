@@ -34,7 +34,7 @@
             <button class="btnsearch">搜索</button>
           </div>
         </el-menu-item>
-        <el-menu-item>个人中心</el-menu-item>
+        <el-menu-item><a href="user.html">个人中心</a></el-menu-item>
         <el-menu-item>创作中心</el-menu-item>
         <el-menu-item>帮助中心</el-menu-item>
         <el-menu-item>我的文章</el-menu-item>
@@ -103,21 +103,21 @@
               <el-divider></el-divider>
 
 
-              <div class="entry" v-for="(item,index) in 8" :key="index">
+              <div class="entry" v-for="(item,index) in tableData" :key="index">
                 <div class="entry-left">
-                  <h4>2024款：最新前端技术趋势</h4>
-                  <p>上一次的时候聊了 那么些已经落后的前端开发技术 。但是光知道什么技术落后了是不够的，咱们还得知道 前端最新的技术趋势是什么。所以，今天这篇文章，咱们就来聊一聊，最新前端技术趋势。</p>
+                  <h4>{{ item.articleTitle }}</h4>
+                  <p>{{ item.articleContent }}</p>
                   <div class="entry-foot">
                     <div class="entry-foot-left">
-                      <span>雨纷纷</span>
+                      <span>{{ item.userName }}</span>
                       <el-divider direction="vertical"></el-divider>
-                      <span>旧故里</span>
+                      <span>{{ item.articleViews }}</span>
                       <el-divider direction="vertical"></el-divider>
-                      <span>草木深</span>
+                      <span>{{ item.articleLikeCount }}</span>
                     </div>
 
                     <div class="entry-foot-rigth">
-                      <el-tag type="warning">前端</el-tag>
+                      <el-tag type="warning">{{ item.labelName }}</el-tag>
                       <el-tag type="warning">程序员</el-tag>
                     </div>
                   </div>
@@ -182,11 +182,35 @@
       el: '#app',
       data() {
         return {
-
+          // 数据
+          tableData: [{
+            articleId: '',
+            userId: '',
+            sortId: '',
+            labelId: '',
+            articleTitle: '',
+            articleContent: '',
+            articleViews: '',
+            articleCommentCount: '',
+            articleDate: '',
+            articleLikeCount: '',
+            userName: '',
+            labelName: ''
+          }],
         }
       },
-      methods: {
 
+      created() {
+        this.selectAll()
+      },
+
+      methods: {
+        // 查看所有
+        selectAll() {
+          axios.get("/articles").then((res) => {
+            this.tableData = res.data.data
+          })
+        },
       }
     })
   </script>

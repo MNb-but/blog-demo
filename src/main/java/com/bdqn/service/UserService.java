@@ -11,4 +11,6 @@ public interface UserService {
     User getById(Integer id);
 
     List<User> getAll();
+
+    User login(User user);
 }

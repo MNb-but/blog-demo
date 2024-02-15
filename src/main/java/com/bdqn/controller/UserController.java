@@ -2,6 +2,7 @@ package com.bdqn.controller;
 
 import com.bdqn.pojo.User;
 import com.bdqn.service.UserService;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,13 @@ public class UserController {
         Integer code = all != null ? Code.GET_OK : Code.GET_ERR;
         String msg = all != null ? "" : "数据查询失败，请重试！";
         return new Result(code, all, msg);
+    }
+
+    @GetMapping("/login")
+    public Result login(@PathVariable User user) {
+        User login = userService.login(user);
+        Integer code = user != null ? Code.GET_OK : Code.GET_ERR;
+        String msg = user != null ? "" : "登录操作失败，请重试！";
+        return new Result(code, user, msg);
     }
 }

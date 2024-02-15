@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
   <el-container id="app">
     <el-header>
       <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
@@ -167,21 +166,22 @@
                   <span>近期发布</span>
                 </div>
                 <div v-for="(o,index) in 5" :key="index" class="text-list">
-                    <p>
-                      文章标题 
-                      <el-dropdown>
-                        <span class="el-dropdown-link">
-                          ▪ ▪ ▪
-                        </span>
-                        <el-dropdown-menu slot="dropdown">
-                          <el-dropdown-item>编辑</el-dropdown-item>
-                          <el-dropdown-item>删除</el-dropdown-item>
-                        </el-dropdown-menu>
-                      </el-dropdown>
-                    </p>
-                    <p>{{'2024-03-12 15:57'}}
+                  <p>
+                    文章标题
+                    <el-dropdown>
+                      <span class="el-dropdown-link">
+                        ▪ ▪ ▪
+                      </span>
+                      <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>编辑</el-dropdown-item>
+                        <el-dropdown-item>删除</el-dropdown-item>
+                      </el-dropdown-menu>
+                    </el-dropdown>
+                  </p>
+                  <p>{{'2024-03-12 15:57'}}
                     <el-divider direction="vertical"></el-divider>
-                    1展现 · 1阅读 · 0点赞 · 0评论 · 0收藏</p>
+                    1展现 · 1阅读 · 0点赞 · 0评论 · 0收藏
+                  </p>
                 </div>
               </el-card>
             </div>
@@ -237,7 +237,7 @@
 
   </el-container>
 
-
+  
   <script>
     new Vue({
       el: '#app',

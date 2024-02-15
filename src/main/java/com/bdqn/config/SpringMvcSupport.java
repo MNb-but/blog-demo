@@ -10,11 +10,10 @@ public class SpringMvcSupport extends WebMvcConfigurationSupport{
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/");
-        registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
-        registry.addResourceHandler("/plugins/**").addResourceLocations("/plugins/");
         registry.addResourceHandler("/element-ui/**").addResourceLocations("/element-ui/");
         registry.addResourceHandler("/icons-main/**").addResourceLocations("/icons-main/");
+        registry.addResourceHandler("/image/**").addResourceLocations("/image/");
     }
 }
