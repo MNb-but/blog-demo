@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="./js/axios-0.18.0.js"></script>
+    <link rel="icon" href="image/visit.png">
+</head>
+
+<body>
+    <div id="container">
+        <form class="title">
+            <h1 class="heading">LOGIN IN</h1>
+
+            <p>账号:<input class="name" type="text" v-model="user.username"></p>
+            <p>密码:<input class="password" type="password" v-model="user.password"></p>
+            <div class="button">
+                <input class="button1" type="button" value="登录" @click="login()">
+                <input class="button1" type="reset" value="取消">&nbsp;&nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#container',
+
+            methods: {
+                login() {
+                    axios({
+                        method: "post",
+                        url: "http://localhost:8080/Dormitory/dormitory/Login",
+                        data: this.user
+                    }).then(resp => {
+                        console.log(resp)
+                        if (resp.data != null) {
+                            location.href = 'index.html'
+                        } else {
+                            this.$message.error('账号或密码错误!');
+                        }
+                    })
+                },
+            },
+
+            data() {
+                return {
+                    user: {
+                        username: '王立国',
+                        password: '12345'
+                    },
+                    token: ''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

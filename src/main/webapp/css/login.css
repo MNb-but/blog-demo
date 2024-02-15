@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url("../image/login.jpg");
+    background-size: cover;
+}
+
+input{
+    text-indent: 1em;
+    outline: none;
+    text-indent: 1em;
+    background-color: #ffffff;
+}
+
+/*表单*/
+.title{
+    /*文本居中*/
+    text-align: center;
+    /*居中*/
+    margin: auto;
+    /*宽*/
+    width: 37%;
+    /*高*/
+    height: 380px;
+   /* 整体下移*/
+   margin-top: 150px;
+    /*边框*/
+    border: 1px solid black;
+    /*边框渐变颜色*/
+    /* background-color: #b3b7bb; */
+    /* background: linear-gradient(60deg,antiquewhite,#b1dfbb); */
+    border-color: rgba(75, 81, 95, 0.3);
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.5), 0px 0px 15px rgba(75, 75, 75, 0.3);
+    border-radius: 5px;
+}
+
+p{
+    margin-top: 35px;
+    border-radius: 5px;
+    line-height: 30px;
+    /*color: azure;*/
+}
+/*重置、*/
+.remeber{
+    margin-right: 176px;
+    margin-left: 20px;
+    border-style: hidden;
+}
+/*用户名*/
+.name{
+    width: 200px;
+    height: 30px;
+    margin-top: 7px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    /* background-color: rgba(10, 200, 123, 0.5); */
+}
+/*密码框*/
+.password{
+    width: 200px;
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    /* background-color: rgba(10, 200, 123, 0.5); */
+}
+/*标题*/
+.heading{
+    margin-top: 20px;
+}
+/*按钮设置*/
+.button{
+    margin-top: 30px;
+    margin-left: 14px;
+}
+
+.button1{
+    /* text-align: center !important; */
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    color: rgb(88, 88, 88);
+    /* background-color: rgba(10, 200, 123, 0.5); */
+    padding-right: 12px;
+}
+
+.button1:nth-child(1) {
+    margin-right: 10px;
+}
