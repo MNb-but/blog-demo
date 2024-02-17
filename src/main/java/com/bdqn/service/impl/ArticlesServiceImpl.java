@@ -28,4 +28,30 @@ public class ArticlesServiceImpl implements ArticlesService {
     public boolean passTow(Articles articles) {
         return articlesDao.passTow(articles) > 0;
     }
+
+    @Override
+    public Articles getCard(String userName) {
+        return articlesDao.getCard(userName);
+    }
+
+    @Override
+    public List<Articles> getUserBlog(String userName) {
+        return articlesDao.getUserBlog(userName);
+    }
+
+    @Override
+    public boolean insertBlog(Articles articles) {
+        return articlesDao.insertBlog(articles) > 0;
+    }
+
+    @Override
+    public boolean upBlog(Articles articles) {
+        return articlesDao.upBlog(articles) > 0;
+    }
+
+    @Override
+    public boolean delBlog(Integer id) {
+        return articlesDao.delBlog(id) > 0;
+    }
+
 }

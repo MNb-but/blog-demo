@@ -12,4 +12,14 @@ public interface ArticlesService {
     boolean passOne(Articles articles);
 
     boolean passTow(Articles articles);
+
+    Articles getCard(String userName);
+
+    List<Articles> getUserBlog(String userName);
+
+    boolean insertBlog(Articles articles);
+
+    boolean upBlog(Articles articles);
+
+    boolean delBlog(Integer id);
 }

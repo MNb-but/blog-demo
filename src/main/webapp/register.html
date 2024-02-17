@@ -22,8 +22,9 @@
 
             <p>账号:<input class="name" type="text" v-model="user.userName"></p>
             <p>密码:<input class="password" type="password" v-model="user.userPassword"></p>
+            <p>邮箱:<input class="useremail" type="email" v-model="user.userEmail"></p>
             <div class="button">
-                <input class="button1" type="button" value="注册" @click="login()">
+                <input class="button1" type="button" value="注册" @click="register()">
                 <input class="button1" type="reset" value="取消">&nbsp;&nbsp;&nbsp;
             </div>
         </form>
@@ -34,18 +35,24 @@
             el: '#container',
 
             methods: {
-                login() {
+                register() {
                     axios({
-                        method: "get",
-                        url: "/user/login",
+                        method: "post",
+                        url: "/user/register",
                         data: this.user
                     }).then(res => {
                         if (res.data.data != null) {
-                            window.sessionStorage.setItem('userName',res.data.data.userName)
-                            window.sessionStorage.setItem('userPassword',res.data.data.userPassword)
-                            location.href = 'index.html'
+                            window.sessionStorage.setItem('userName',this.user.userName)
+                            window.sessionStorage.setItem('userPassword',this.user.userPassword)
+                            location.href = 'center.html'
                         } else {
-                            this.$message.error('账号或密码错误!');
+                            if (res.data.data == 20011) {
+                                this.$message.success("注册成功")
+                            } else if (res.data.code == 20010) {
+                                this.$message.info("注册失败")
+                            } else {
+                                this.$message.error(res.data.msg)
+                            }
                         }
                     })
                 },
@@ -55,7 +62,8 @@
                 return {
                     user: {
                         userName: '',
-                        userPassword: ''
+                        userPassword: '',
+                        userEmail: ''
                     },
                 }
             }

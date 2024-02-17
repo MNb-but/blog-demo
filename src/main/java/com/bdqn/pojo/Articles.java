@@ -21,11 +21,13 @@ public class Articles {
     private String userName; //作者
     private String labelName; //标签
 
+    private Integer sum;
+
 
     public Articles() {
     }
 
-    public Articles(Integer articleId, Integer userId, Integer sortId, Integer labelId, String articleTitle, String articleContent, Integer articleViews, Integer articleCommentCount, Date articleDate, Integer articleLikeCount, int pass, String userName, String labelName) {
+    public Articles(Integer articleId, Integer userId, Integer sortId, Integer labelId, String articleTitle, String articleContent, Integer articleViews, Integer articleCommentCount, Date articleDate, Integer articleLikeCount, int pass, String userName, String labelName, Integer sum) {
         this.articleId = articleId;
         this.userId = userId;
         this.sortId = sortId;
@@ -39,6 +41,7 @@ public class Articles {
         this.pass = pass;
         this.userName = userName;
         this.labelName = labelName;
+        this.sum = sum;
     }
 
     /**
@@ -249,7 +252,23 @@ public class Articles {
         this.labelName = labelName;
     }
 
+    /**
+     * 获取
+     * @return sum
+     */
+    public Integer getSum() {
+        return sum;
+    }
+
+    /**
+     * 设置
+     * @param sum
+     */
+    public void setSum(Integer sum) {
+        this.sum = sum;
+    }
+
     public String toString() {
-        return "Articles{articleId = " + articleId + ", userId = " + userId + ", sortId = " + sortId + ", labelId = " + labelId + ", articleTitle = " + articleTitle + ", articleContent = " + articleContent + ", articleViews = " + articleViews + ", articleCommentCount = " + articleCommentCount + ", articleDate = " + articleDate + ", articleLikeCount = " + articleLikeCount + ", pass = " + pass + ", userName = " + userName + ", labelName = " + labelName + "}";
+        return "Articles{articleId = " + articleId + ", userId = " + userId + ", sortId = " + sortId + ", labelId = " + labelId + ", articleTitle = " + articleTitle + ", articleContent = " + articleContent + ", articleViews = " + articleViews + ", articleCommentCount = " + articleCommentCount + ", articleDate = " + articleDate + ", articleLikeCount = " + articleLikeCount + ", pass = " + pass + ", userName = " + userName + ", labelName = " + labelName + ", sum = " + sum + "}";
     }
 }

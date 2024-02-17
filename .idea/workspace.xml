@@ -4,19 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab55ba2c-5ac5-453f-a2c3-7866f38c7a98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/interceptor/ProjectInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+    <list default="true" id="ab55ba2c-5ac5-453f-a2c3-7866f38c7a98" name="Changes" comment="提交">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/LabelsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/SortController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/LabelsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/SortDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/pojo/Labels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/pojo/Sort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/LabelsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/SortService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/LabelsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/SortServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/config/SpringMvcSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/config/SpringMvcSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/ArticlesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/ArticlesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/interceptor/ProjectInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/controller/interceptor/ProjectInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/ArticlesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/ArticlesDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/pojo/Articles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/pojo/Articles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/service/ArticlesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/ArticlesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/ArticlesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/ArticlesServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bdqn/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/前端图.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/image/前端图.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/center.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +166,10 @@
       <workItem from="1707714434872" duration="3014000" />
       <workItem from="1707885552335" duration="14977000" />
       <workItem from="1707969817966" duration="9469000" />
-      <workItem from="1707986247047" duration="396000" />
+      <workItem from="1707986247047" duration="8748000" />
+      <workItem from="1708055161947" duration="6575000" />
+      <workItem from="1708082141824" duration="13745000" />
+      <workItem from="1708144872654" duration="16447000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <option name="closed" value="true" />
@@ -261,7 +283,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707906185437</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="提交">
+      <option name="closed" value="true" />
+      <created>1707986705614</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707986705614</updated>
+    </task>
+    <task id="LOCAL-00016" summary="提交">
+      <option name="closed" value="true" />
+      <created>1707986781697</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1707986781697</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

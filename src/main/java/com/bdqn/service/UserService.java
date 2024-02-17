@@ -1,6 +1,8 @@
 package com.bdqn.service;
 
+import com.bdqn.pojo.Articles;
 import com.bdqn.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -12,5 +14,10 @@ public interface UserService {
 
     List<User> getAll();
 
-    User login(User user);
+    User login(String userName,String userPassword);
+
+    boolean addUser(User user);
+
+    User getUser(String userName);
+
 }

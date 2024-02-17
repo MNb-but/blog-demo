@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客论坛</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/user.css">
+  <script src="./js/jquery-3.7.1.min.js"></script>
+  <script src="./js/vue.js"></script>
+  <script src="element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+  <script src="./js/axios-0.18.0.js"></script>
+</head>
+
+<body>
+  <el-container id="app">
+    <el-header>
+      <el-menu class="el-menu-demo" mode="horizontal">
+
+        <el-menu-item>
+          <h2>博客论坛</h2>
+        </el-menu-item>
+        <el-menu-item>创作中心</el-menu-item>
+
+        <el-menu-item class="an"></el-menu-item>
+
+        <el-menu-item>帮助中心</el-menu-item>
+        <el-menu-item>
+          <template>
+            <div class="demo-type">
+              <div>
+                <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+              </div>
+            </div>
+          </template>
+        </el-menu-item>
+
+
+      </el-menu>
+    </el-header>
+
+    <el-main>
+      <!-- <div class="main-left"> -->
+      <el-row class="tac">
+        <el-col :span="4">
+          <div class="main-left">
+            <el-menu class="el-menu-vertical-demo">
+              <el-button type="primary" @click="dialogFormVisible = true">文章创作</el-button>
+
+              <el-menu-item index="1">
+                <i class="el-icon-menu"></i>
+                <span slot="title">首页</span>
+              </el-menu-item>
+
+              <el-submenu index="2">
+                <template slot="title">
+                  <i class="el-icon-location"></i>
+                  <span>内容管理</span>
+                </template>
+                <template slot="title"></template>
+                <el-menu-item index="2-1">文章管理</el-menu-item>
+                <el-menu-item index="2-2">专栏管理</el-menu-item>
+                <el-menu-item index="2-3">热点管理</el-menu-item>
+              </el-submenu>
+
+              <el-submenu index="3">
+                <template slot="title">
+                  <i class="el-icon-location"></i>
+                  <span>数据中心</span>
+                </template>
+                <template slot="title"></template>
+                <el-menu-item index="3-1">内容数据</el-menu-item>
+                <el-menu-item index="3-2">粉丝数据</el-menu-item>
+              </el-submenu>
+
+              <el-submenu index="4">
+                <template slot="title">
+                  <i class="el-icon-location"></i>
+                  <span>创作中心</span>
+                </template>
+                <template slot="title"></template>
+                <el-menu-item index="4-1">创作等级权益</el-menu-item>
+                <el-menu-item index="4-2">创作灵感</el-menu-item>
+              </el-submenu>
+
+              <el-submenu index="5">
+                <template slot="title">
+                  <i class="el-icon-location"></i>
+                  <span>创作工具</span>
+                </template>
+                <template slot="title"></template>
+                <el-menu-item index="5-1">文章导入发布</el-menu-item>
+              </el-submenu>
+
+            </el-menu>
+          </div>
+          <!--添加-->
+          <el-dialog :visible.sync="dialogFormVisible">
+            <el-form ref="form" :model="form" label-width="80px">
+              <el-form-item label="活动名称">
+                <el-input v-model="form.articleTitle"></el-input>
+              </el-form-item>
+
+              <el-form-item label="活动区域">
+                <el-select v-model="form.sortId" placeholder="请选择分类">
+                  <el-option v-for="item in sort" :label="item.sortName" :value="item.sortId"></el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="活动区域">
+                <el-select v-model="form.labelId" placeholder="请选择标签">
+                  <el-option v-for="item in labels" :label="item.labelName" :value="item.labelId"></el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="活动形式">
+                <el-input type="textarea" v-model="form.articleContent"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="blog()">添加</el-button>
+                <el-button @click="dialogFormVisible = false">取消</el-button>
+              </el-form-item>
+            </el-form>
+          </el-dialog>
+        </el-col>
+
+
+        <el-col :span="19">
+          <template>
+            <div class="main-text">
+              <div class="main-head">
+                <div class="main-head-img">
+                  <template>
+                    <div class="demo-type">
+                      <div>
+                        <el-avatar
+                          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+
+                <div class="main-head-right">
+                  <p>{{ this.tableData.userName}}</p>
+                  <p>
+                    <span>0 粉丝</span>
+                    <el-divider direction="vertical"></el-divider>
+                    <span>0 关注</span>
+                    <el-divider direction="vertical"></el-divider>
+                    <span>在论坛创作的第 {{
+                        // Math.floor((Date.now() - this.tableData.userRegistrationTime) / (1000 * 60 * 60 * 24))
+                        new Date().getDate() - new Date(this.tableData.userRegistrationTime).getDate()
+                      }} 天</span>
+                  </p>
+
+                </div>
+              </div>
+
+              <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                  <span>数据概览</span>
+                </div>
+                <div class="text item">
+                  <div>
+                    <p>总粉丝数</p>
+                    <h1>0</h1>
+                  </div>
+                  <div>
+                    <p>总展现数</p>
+                    <h1>{{ this.card.sum != 0 ? this.card.sum : 0 }}</h1>
+                  </div>
+                  <div>
+                    <p>总阅读数</p>
+                    <h1>{{ this.card.articleViews != 0 && this.card.articleViews != null ? this.card.articleViews : 0 }}</h1>
+                  </div>
+                  <div class="button">
+                    <p>总点赞数</p>
+                    <h1>{{ this.card.articleLikeCount != 0 && this.card.articleLikeCount != null ? this.card.articleLikeCount : 0 }}</h1>
+                  </div>
+                  <div class="button">
+                    <p>总评论数</p>
+                    <h1>{{ this.card.articleCommentCount != 0 && this.card.articleCommentCount != null ? this.card.articleCommentCount : 0 }}</h1>
+                  </div>
+                  <div class="button">
+                    <p>总收藏数</p>
+                    <h1>0</h1>
+                  </div>
+                </div>
+              </el-card>
+
+              <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                  <span>近期发布</span>
+                </div>
+                <div v-if="text != null" v-for="(item,index) in text" :key="index" class="text-list">
+                  <p>
+                    {{item.articleTitle}}
+                    <el-dropdown>
+                      <span class="el-dropdown-link">
+                        ▪ ▪ ▪
+                      </span>
+                      <el-dropdown-menu slot="dropdown">
+
+                            <el-dropdown-item><a @click="editItem(item)">编辑</a></el-dropdown-item>
+                            <el-dropdown-item><a @click="deleteItem(item)">删除</a></el-dropdown-item>
+
+                      </el-dropdown-menu>
+                    </el-dropdown>
+                  </p>
+                  <p>{{new Date(item.articleDate).toLocaleString()}}
+                    <el-divider direction="vertical"></el-divider>
+                    1展现 ·
+                    {{item.articleViews != null ? item.articleViews : 0}}阅读 ·
+                    {{item.articleLikeCount != null ? item.articleLikeCount : 0}}点赞 ·
+                    {{item.articleCommentCount != null ? item.articleCommentCount : 0}}评论 ·
+                    0收藏
+                  </p>
+                </div>
+              </el-card>
+            </div>
+          </template>
+
+
+          <el-dialog :visible.sync="dialogVisible">
+            <el-form ref="form" :model="form" label-width="80px">
+              <el-form-item label="活动名称">
+                <el-input v-model="form.articleTitle"></el-input>
+              </el-form-item>
+
+              <el-form-item label="活动区域">
+                <el-select v-model="form.sortId" placeholder="请选择分类">
+                  <el-option v-for="item in sort" :label="item.sortName" :value="item.sortId"></el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="活动区域">
+                <el-select v-model="form.labelId" placeholder="请选择标签">
+                  <el-option v-for="item in labels" :label="item.labelName" :value="item.labelId"></el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="活动形式">
+                <el-input type="textarea" v-model="form.articleContent"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="upBlog()">编辑</el-button>
+                <el-button @click="up()">取消</el-button>
+              </el-form-item>
+            </el-form>
+          </el-dialog>
+        </el-col>
+
+        <el-col :span="5">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>创作活动</span>
+              <el-button style="float: right; padding: 3px 0; color: #8A919F;" type="text">查看更多＞</el-button>
+            </div>
+            <div class="text item">
+              <img src="image/活动.jpg" alt="" style="width: 255px; height: 320px;">
+            </div>
+          </el-card>
+
+
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>创作话题</span>
+              <el-button style="float: right; padding: 3px 0; color: #8A919F;" type="text">查看更多＞</el-button>
+            </div>
+            <div class="recommend">
+              <p># 创意投稿大赛 # <el-tag type="warning">荐</el-tag></p>
+              <p>149参与 · 184k阅读</p>
+            </div>
+            <div class="recommend">
+              <p># 每天一个知识点 # <el-tag type="warning">荐</el-tag></p>
+              <p>149参与 · 184k阅读</p>
+            </div>
+            <div class="recommend">
+              <p># 创意投稿大赛 # <el-tag type="warning">荐</el-tag></p>
+              <p>149参与 · 184k阅读</p>
+            </div>
+            <div class="recommend">
+              <p># 创意投稿大赛 # <el-tag type="warning">荐</el-tag></p>
+              <p>149参与 · 184k阅读</p>
+            </div>
+            <div class="recommend">
+              <p># 创意投稿大赛 #</p>
+              <p>149参与 · 184k阅读</p>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </el-main>
+  </el-container>
+
+
+
+  
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          tableData: [{
+            userId: '',
+            userName: '',
+            userPassword: '',
+            userEmail: '',
+            userProfilePhoto: '',
+            userRegistrationTime: '',
+            userBirthday: '',
+            userAge: '',
+            userPhoneNumber: ''
+          }],
+
+          text: [{
+            articleId: '',
+            userId: '',
+            sortId: '',
+            labelId: '',
+            articleTitle: '',
+            articleContent: '',
+            articleViews: '',
+            articleCommentCount: '',
+            articleDate: '',
+            articleLikeCount: '',
+            userName: '',
+            labelName: '',
+            sum: ''
+          }],
+
+          card: {
+            sum: '',
+            articleViews: '',
+            articleLikeCount: '',
+            articleCommentCount: '',
+          },
+
+          labels: [{
+            labelId: '',
+            labelName: '',
+            labelAlias: '',
+            labelDescription: ''
+          }],
+
+          sort: [{
+            sortId: '',
+            sortName: '',
+            sortAlias: '',
+            sortDescription: ''
+          }],
+
+
+          dialogFormVisible: false,
+
+          dialogVisible: false,
+
+          form: {
+            articleId: '',
+            userId: '',
+            articleTitle: '',
+            labelId: '',
+            sortId: '',
+            articleContent: ''
+          },
+        }
+      },
+
+      created() {
+        this.getCard()
+        this.getUser()
+        this.getUserBlog()
+        this.getLabels()
+        this.getSort()
+      },
+
+      methods: {
+        getCard() {
+          let userName = window.sessionStorage.getItem('userName')
+
+          axios.get("/articles/getCard/" + userName).then((res) => {
+            this.card = res.data.data
+          })
+        },
+
+        getUser() {
+          let userName = window.sessionStorage.getItem('userName')
+
+          axios.get("/user/getUser/" + userName).then((res) => {
+            this.tableData = res.data.data
+          })
+        },
+
+        getUserBlog() {
+          let userName = window.sessionStorage.getItem('userName')
+
+          axios.get("/articles/getUserBlog/" + userName).then((res) => {
+            this.text = res.data.data
+          })
+        },
+
+        blog() {
+          this.form.userId = window.sessionStorage.getItem('userId')
+
+          axios.post("/articles", this.form).then((res) => {
+            if (res.data.data == 20011) {
+              this.$message.success("发布成功")
+
+              window.location.reload();
+            } else if (res.data.code == 20010) {
+              this.$message.info("发布失败")
+            } else {
+              this.$message.error(res.data.msg)
+            }
+          })
+
+          this.getCard()
+          this.getUserBlog()
+
+          this.dialogFormVisible = false
+        },
+
+        getLabels() {
+          axios.get("/labels").then((res) => {
+            this.labels = res.data.data
+          })
+        },
+
+        getSort() {
+          axios.get("/sort").then((res) => {
+            this.sort = res.data.data
+          })
+        },
+
+        upBlog() {
+          axios.put("articles/upBlog", this.form).then((res) => {
+            if (res.data.code == 20031) {
+              this.$message.success("编辑成功")
+
+              window.location.reload();
+            }else if (res.data.code == 20030) {
+              this.$message.error("编辑失败")
+            } else {
+              this.$message.error(res.data.msg)
+            }
+            this.getUserBlog()
+
+          })
+
+          this.dialogVisible = false
+        },
+
+        up() {
+          this.form = {}
+          this.dialogVisible = false
+        },
+
+        editItem(row) {
+          this.form = JSON.parse(JSON.stringify(row));
+
+          this.dialogVisible = true
+        },
+
+        deleteItem(row) {
+          this.$confirm("是否确定删除？","提示",{
+            type: 'info'
+          }).then(() => {
+            //2.删除业务
+            axios.delete("articles/" + row.articleId).then((res) => {
+              if (res.data.code == 20021) {
+                this.$message.success("删除成功")
+
+                window.location.reload();
+              } else {
+                this.$message.error("删除失败")
+              }
+            })
+          }).catch(() => {
+            //3.取消删除
+            this.$message.info("取消删除操作")
+          }).finally(() => {
+            this.getUserBlog()
+          });
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

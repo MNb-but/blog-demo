@@ -19,8 +19,9 @@
         <form class="title">
             <h1 class="heading">LOGIN IN</h1>
 
-            <p>账号:<input class="name" type="text" v-model="user.username"></p>
-            <p>密码:<input class="password" type="password" v-model="user.password"></p>
+            <p>账号:<input class="name" type="text" v-model="user.userName"></p>
+            <p>密码:<input class="password" type="password" v-model="user.userPassword"></p>
+            <a style="font-size: 12px;margin-left: 155px;text-decoration: underline;" href="./register.html">没有账号？去注册</a>
             <div class="button">
                 <input class="button1" type="button" value="登录" @click="login()">
                 <input class="button1" type="reset" value="取消">&nbsp;&nbsp;&nbsp;
@@ -35,15 +36,16 @@
             methods: {
                 login() {
                     axios({
-                        method: "post",
-                        url: "http://localhost:8080/Dormitory/dormitory/Login",
-                        data: this.user
-                    }).then(resp => {
-                        console.log(resp)
-                        if (resp.data != null) {
-                            location.href = 'index.html'
+                        method: "get",
+                        url: "/user/login/" + this.user.userName + "/" + this.user.userPassword,
+                    }).then(res => {
+                        if (res.data.data != null) {
+                            window.sessionStorage.setItem('userId',res.data.data.userId)
+                            window.sessionStorage.setItem('userName',res.data.data.userName)
+                            window.sessionStorage.setItem('userPassword',res.data.data.userPassword)
+                            location.href = 'center.html'
                         } else {
-                            this.$message.error('账号或密码错误!');
+                            this.$message.error(res.data.msg);
                         }
                     })
                 },
@@ -52,10 +54,9 @@
             data() {
                 return {
                     user: {
-                        username: '王立国',
-                        password: '12345'
+                        userName: '',
+                        userPassword: ''
                     },
-                    token: ''
                 }
             }
         })

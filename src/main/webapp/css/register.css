@@ -2,3 +2,7 @@ body{
     background-image: url("../image/register.jpg");
     background-size: cover;
 }
+
+.button {
+    margin-top: 30px!important;
+}
