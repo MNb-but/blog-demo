@@ -151,7 +151,8 @@
                     <el-divider direction="vertical"></el-divider>
                     <span>在论坛创作的第 {{
                         // Math.floor((Date.now() - this.tableData.userRegistrationTime) / (1000 * 60 * 60 * 24))
-                        new Date().getDate() - new Date(this.tableData.userRegistrationTime).getDate()
+                        // new Date().getDate() - new Date(this.tableData.userRegistrationTime).getDate()
+                        Math.floor(new Date().getDate() - new Date(this.tableData.userRegistrationTime).getDate() / (1000 * 3600 * 24))
                       }} 天</span>
                   </p>
 
@@ -259,7 +260,7 @@
               <el-button style="float: right; padding: 3px 0; color: #8A919F;" type="text">查看更多＞</el-button>
             </div>
             <div class="text item">
-              <img src="image/活动.jpg" alt="" style="width: 255px; height: 320px;">
+              <img src="image/center.png" alt="" style="width: 255px; height: 320px;">
             </div>
           </el-card>
 
@@ -378,7 +379,7 @@
 
       methods: {
         getCard() {
-          let userName = window.sessionStorage.getItem('userName')
+          let userName = window.localStorage.getItem('userName')
 
           axios.get("/articles/getCard/" + userName).then((res) => {
             this.card = res.data.data
@@ -386,7 +387,7 @@
         },
 
         getUser() {
-          let userName = window.sessionStorage.getItem('userName')
+          let userName = window.localStorage.getItem('userName')
 
           axios.get("/user/getUser/" + userName).then((res) => {
             this.tableData = res.data.data
@@ -394,7 +395,7 @@
         },
 
         getUserBlog() {
-          let userName = window.sessionStorage.getItem('userName')
+          let userName = window.localStorage.getItem('userName')
 
           axios.get("/articles/getUserBlog/" + userName).then((res) => {
             this.text = res.data.data
@@ -402,7 +403,7 @@
         },
 
         blog() {
-          this.form.userId = window.sessionStorage.getItem('userId')
+          this.form.userId = window.localStorage.getItem('userId')
 
           axios.post("/articles", this.form).then((res) => {
             if (res.data.data == 20011) {

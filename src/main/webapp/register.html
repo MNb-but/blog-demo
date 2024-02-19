@@ -42,8 +42,8 @@
                         data: this.user
                     }).then(res => {
                         if (res.data.data != null) {
-                            window.sessionStorage.setItem('userName',this.user.userName)
-                            window.sessionStorage.setItem('userPassword',this.user.userPassword)
+                            window.localStorage.setItem('userName',this.user.userName)
+                            window.localStorage.setItem('userPassword',this.user.userPassword)
                             location.href = 'center.html'
                         } else {
                             if (res.data.data == 20011) {

@@ -47,7 +47,7 @@ body {
 .search {
     width: 400px;
     height: 34px;
-    background-image: url(../image/搜索.png);
+    background-image: url(../image/search.png);
     /*搜索框背景图片*/
     background-size: 25px 25px;
     background-repeat: no-repeat;
