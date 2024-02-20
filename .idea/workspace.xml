@@ -7,13 +7,6 @@
     <list default="true" id="ab55ba2c-5ac5-453f-a2c3-7866f38c7a98" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/center.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/center.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/前端图.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/搜索.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/活动.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/image/center.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +146,8 @@
       <workItem from="1708167339714" duration="177000" />
       <workItem from="1708189441124" duration="282000" />
       <workItem from="1708331071524" duration="2444000" />
-      <workItem from="1708342987177" duration="3263000" />
+      <workItem from="1708342987177" duration="4225000" />
+      <workItem from="1708388151398" duration="1124000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <option name="closed" value="true" />
@@ -307,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708164463971</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="提交">
+      <option name="closed" value="true" />
+      <created>1708350920473</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1708350920473</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
